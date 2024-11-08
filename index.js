@@ -34,25 +34,30 @@ const songs = [];
 
 // Route to upload song data
 app.post("/upload", upload.fields([{ name: "mp3" }, { name: "image" }]), (req, res) => {
-  const { name, duration } = req.body;
-  const mp3 = req.files["mp3"] ? req.files["mp3"][0].path : null;
-  const image = req.files["image"] ? req.files["image"][0].path : null;
-
-  if (!name || !duration || !mp3) {
-    return res.status(400).json({ error: "Name, duration, and mp3 file are required." });
-  }
-
-  const song = {
-    id: Date.now(),
-    name,
-    duration,
-    mp3,
-    image,
-  };
-
-  songs.push(song);
-  res.status(201).json(song);
-});
+    try {
+      const { name, duration } = req.body;
+      const mp3 = req.files["mp3"] ? req.files["mp3"][0].path : null;
+      const image = req.files["image"] ? req.files["image"][0].path : null;
+  
+      if (!name || !duration || !mp3) {
+        return res.status(400).json({ error: "Name, duration, and mp3 file are required." });
+      }
+  
+      const song = {
+        id: Date.now(),
+        name,
+        duration,
+        mp3,
+        image,
+      };
+  
+      songs.push(song);
+      res.status(201).json(song);
+    } catch (error) {
+      console.error("Upload error:", error);  // This will appear in Vercel logs
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
 
 // Route to get all songs
 app.get("/songs", (req, res) => {
