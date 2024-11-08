@@ -3,7 +3,7 @@
     "id": 1,
     "name": "As It Was",
     "artist": "Harry Styles",
-    "image": "/images/car.jpg",
+    "image": "/images/cat.jpg",
     "mp3Url": "/songs/as_it_was__harry_styles.mp3"  
   },
   {
@@ -12,5 +12,12 @@
     "artist": "Charle Puth",
     "image": "/images/car.jpg",
     "mp3Url": "/songs/dangerously_charlie_puth.mp3" 
+  },
+  {
+    "id": 3,
+    "name": "Space Cadet",
+    "artist": "Metro Boomin",
+    "image": "/images/cab.jpg",
+    "mp3Url": "/songs/space_cadet__metro_boomin.mp3"  
   }
 ]

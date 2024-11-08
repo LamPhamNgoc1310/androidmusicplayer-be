@@ -7,7 +7,6 @@ const PORT = 3000;
 app.use(express.json()); // Middleware to parse JSON requests
 app.use(express.static('public')); // Serve static files (MP3s, images, etc.)
 
-
 // Load song data from JSON file
 const songsFilePath = path.join(__dirname, 'songs.json');
 
